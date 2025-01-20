@@ -6,7 +6,7 @@ interface Personaggio {
 
 class SuperEroe implements Personaggio {
     private int forzaFisica = 10;
-
+ 
     @Override
     public void agisci() {
         forzaFisica -= 3; 
