@@ -1,0 +1,95 @@
+//Fatto con Marsano
+interface Personaggio {
+    void agisci(); 
+    int getForzaFisica();
+}
+
+class SuperEroe implements Personaggio {
+    private int forzaFisica = 10;
+
+    @Override
+    public void agisci() {
+        forzaFisica -= 3; 
+    }
+
+    @Override
+    public int getForzaFisica() {
+        return forzaFisica;
+    }
+}
+
+
+class Vampiro implements Personaggio {
+    private int forzaFisica = 15;
+
+    @Override
+    public void agisci() {
+        forzaFisica -= 2;
+    }
+
+    @Override
+    public int getForzaFisica() {
+        return forzaFisica;
+    }
+}
+
+
+class Licantropo implements Personaggio {
+    private int forzaFisica; 
+    private boolean lunaPiena;
+
+    
+    public Licantropo(boolean lunaPiena) {
+        this.lunaPiena = lunaPiena;
+        this.forzaFisica = lunaPiena; 
+    }
+
+    public void cambiaForma(boolean lunaPiena) {
+        this.lunaPiena = lunaPiena;
+        
+        if (lunaPiena && forzaFisica < 15) {
+            forzaFisica += (15 - forzaFisica); 
+        } else if (!lunaPiena && forzaFisica > 10) {
+            forzaFisica -= (forzaFisica - 10); 
+        }
+    }
+
+    @Override
+    public void agisci() {
+        if (lunaPiena) {
+            forzaFisica -= 2; 
+        } else {
+            forzaFisica -= 3; 
+        }
+    }
+
+    @Override
+    public int getForzaFisica() {
+        return forzaFisica;
+    }
+}
+
+public class Gioco {
+    public static void main(String[] args){
+        Personaggio supereroe = new SuperEroe();
+        Personaggio vampiro = new Vampiro();
+        Licantropo licantropo = new Licantropo(false); 
+
+   
+        System.out.println("Inizio combttimenti");
+        for (int i = 0; i < 3; i++) {
+            superEroe.agisci();
+        }
+
+     
+        vampiro.agisci();
+
+        for (int i = 0; i < 2; i++) {
+            licantropo.agisci();
+        }
+        System.out.println("Forza fisica residua:");
+        System.out.println("Supreroe: " + superEroe.getForzaFisica());
+        System.out.println("Vampiro: " + vampiro.getForzaFisica());
+        System.out.println("Licantropo: " + licantropo.getForzaFisica());
+    }
+}
